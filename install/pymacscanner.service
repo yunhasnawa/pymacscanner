@@ -1,0 +1,12 @@
+[Unit]
+Description=Python Mac Address Scanner
+After=network.target
+
+[Service]
+ExecStart=/usr/bin/python3 ~/pymacscanner/main.py
+WorkingDirectory=~/
+Restart=always
+User=root
+
+[Install]
+WantedBy=multi-user.target

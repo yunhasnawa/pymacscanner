@@ -5,6 +5,7 @@
 
 import datetime
 
+from Config import Config
 from ScanResult import ScanResult
 
 
@@ -24,5 +25,6 @@ class MacParser:
 
     def get_scan_result(self) -> ScanResult:
         current_time = datetime.datetime.now()
-        result = ScanResult("1", str(current_time), self.mac_addresses)
+        scanner_id = Config.instance().get('scanner_id')
+        result = ScanResult(scanner_id, str(current_time), self.mac_addresses)
         return result

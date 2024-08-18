@@ -1,15 +1,15 @@
 #  Copyright (c) 2024. Yoppy Yunhasnawa, Politeknik Negeri Malang.
 #  This software is available under the MIT License.
 #  Contact me at: yunhasnawa@polinema.ac.id.
-
+from Config import Config
 from MacScanner import MacScanner
 
 scanner: MacScanner
 
 
 def setup():
-    endpoint = 'https://your/endpoint/url'
-    ip_range = '192.168.1.0/24'
+    endpoint = Config.instance().get('endpoint')  # 'https://polinema.sytes.net/rd2/'
+    ip_range = Config.instance().get('ip_range')  # '192.168.1.0/24'
     global scanner
     scanner = MacScanner(endpoint, ip_range)
 
@@ -24,7 +24,8 @@ def loop():
             print("[ERROR] Upload failed!")
     else:
         print("[ERROR] Scan failed!")
-    wait(10000)
+    wait_time_ms = int(Config.instance().get('wait_time_ms'))
+    wait(wait_time_ms)
 
 
 def wait(ms):
