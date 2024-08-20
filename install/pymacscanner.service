@@ -3,8 +3,8 @@ Description=Python Mac Address Scanner
 After=network.target
 
 [Service]
-ExecStart=/usr/bin/python3 ~/pymacscanner/main.py
-WorkingDirectory=~/
+ExecStart=/usr/bin/python3 /usr/local/pymacscanner/main.py
+WorkingDirectory=/usr/local/pymacscanner/
 Restart=always
 User=root
 
